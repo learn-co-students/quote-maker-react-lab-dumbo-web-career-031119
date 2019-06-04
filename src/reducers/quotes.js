@@ -1,8 +1,9 @@
 
+
+
 export default (state = [], action) => {
   switch(action.type){
     case 'ADD_QUOTE':
-      debugger;
       return [...state, action.quote]
     case 'REMOVE_QUOTE':
       const newQuote = state.filter(quote=>{
@@ -10,6 +11,7 @@ export default (state = [], action) => {
         })
       return newQuote
     case 'UPVOTE_QUOTE':
+      // debugger;
       const newUpvote = state.map((quote)=>{
         if (quote.id === action.quoteId){
           quote.votes++

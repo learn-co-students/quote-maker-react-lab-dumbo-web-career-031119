@@ -8,7 +8,8 @@ class QuoteForm extends Component {
   state = {
     //set up a controlled form with internal state
     content: '',
-    author: ''
+    author: '',
+    votes: 0,
   }
 
   handleOnChange = event => {
@@ -24,7 +25,7 @@ class QuoteForm extends Component {
     // Pass quote object to action creator
     // Update component state to return to default state
     event.preventDefault()
-    this.props.dispatch(addQuote(this.state))
+    this.props.dispatch(addQuote(this.state, uuid()))
     this.setState({
       content: '',
       author: ''
@@ -77,15 +78,5 @@ class QuoteForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {...state}
-}
-
-// const mapDispatchToProps = (state) => {
-//   return {
-//   }
-//   handle
-// }
-
 //add arguments to connect as needed
-export default connect(mapStateToProps)(QuoteForm);
+export default connect(null)(QuoteForm);
